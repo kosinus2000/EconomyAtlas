@@ -9,12 +9,12 @@ class AdministrationUnit(Enum):
     MIASTO_W_GMINIE = 'miasto w gminie miejsko-wiejskiej'
     OBSZAR_WIEJSKI_W_GMINIE = 'obszar wiejski w gminie miejsko-wiejskiej'
 
-@dataclass
+@dataclass(kw_only=True)
 class EconomyAtlasBase:
+    area: float | None = None
+    population: int | None = None
+    pkb: float | None = None
     name: str
-    area: float
-    population: int
-    pkb: float
 
 @dataclass
 class Voivodeship(EconomyAtlasBase):
@@ -31,10 +31,9 @@ class Powiat(EconomyAtlasBase):
 @dataclass
 class AdministrationArea(EconomyAtlasBase):
     administration_area_id: int
-    administration_area_id: int
     powiat_id: int
     type: AdministrationUnit
-    location: tuple[float, float]
+    location: tuple[float, float] | None
 
 
 
