@@ -1,7 +1,8 @@
 ﻿from abc import ABC, abstractmethod
 from typing import TypeVar, Generic
+from models.population_model import EconomyAtlasBase
 
-T = TypeVar('T')
+T = TypeVar('T', bound=EconomyAtlasBase)
 
 class Repository(Generic[T], ABC):
 

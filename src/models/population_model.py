@@ -15,25 +15,23 @@ class EconomyAtlasBase:
     population: int | None = None
     pkb: float | None = None
     name: str
+    id: int
 
-@dataclass
+@dataclass(kw_only=True)
 class Voivodeship(EconomyAtlasBase):
-    region_id: int
+    pass
 
-
-@dataclass
+@dataclass(kw_only=True)
 class Powiat(EconomyAtlasBase):
-    powiat_id: int
     region_id: int
 
 
 
-@dataclass
+@dataclass(kw_only=True)
 class AdministrationArea(EconomyAtlasBase):
-    administration_area_id: int
     powiat_id: int
-    type: AdministrationUnit
-    location: tuple[float, float] | None
+    area_type: AdministrationUnit
+    location: tuple[float, float] | None = None
 
 
 
