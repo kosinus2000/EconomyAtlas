@@ -22,4 +22,4 @@ class InMemoryRepository(Repository[T]):
         raise NotFoundError(f"Entity with name {name} not found")
 
     def get_all(self) -> list[T]:
-        return self._items
+        return self._items.copy()
