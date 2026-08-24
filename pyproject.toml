@@ -1,12 +1,12 @@
 [project]
 name = "economyatlas"
 version = "0.1.0"
-description = ""
+description = "Interactive map with economic and historical data"
 authors = [
     {name = "kosinus2000",email = "hubert.kosiorowski1@gmail.com"}
 ]
 readme = "README.md"
-requires-python = "^3.11"
+requires-python = ">=3.11,<4.0"
 dependencies = [
 ]
 
