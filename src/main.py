@@ -1,11 +1,15 @@
-﻿from models import population_model
-from repositories.in_memory_repository import InMemoryRepository
+﻿from fastapi import FastAPI
+from api.voivodeships import router as voivodeships_router
+from api.hello import router as hello_router
 
+app = FastAPI(
+    title="EconomyAtlas API",
+    description="Polish administrative & economic data",
+    version="0.1.0",
+)
 
-voi_repo = InMemoryRepository[population_model.Voivodeship]()
-voi_repo.add(population_model.Voivodeship(id=1, name="dolnośląskie"))
-print(voi_repo.get_by_id(1))
-
-pow_repo = InMemoryRepository[population_model.Powiat]()
-pow_repo.add(population_model.Powiat(id=1, name="lubiński", region_id=1))
-print(pow_repo.get_all())
+app.include_router( voivodeships_router, prefix="/api/voivodeships", tags=["voivodeships"])
+app.include_router(hello_router, prefix="/api", tags=["hello"] )
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

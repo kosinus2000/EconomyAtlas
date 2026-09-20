@@ -23,6 +23,7 @@ class Voivodeship(EconomyAtlasBase):
 
 @dataclass(kw_only=True)
 class Powiat(EconomyAtlasBase):
+
     region_id: int
 
 
